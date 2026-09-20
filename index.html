@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chachan STORY | ให้ Claude ใช้ TradingView MCP</title>
-<meta name="description" content="คู่มือ ebook และบริการนัดติดตั้ง TradingView MCP Server กับ Claude ทำเองได้ใน ~5 นาที ติดขัดมีคนช่วย ทักไลน์ @pluggy00">
+<meta name="description" content="คู่มือ ebook และบริการนัดติดตั้ง TradingView MCP Server กับ Claude ทำเองได้ใน ~5 นาที ติดขัดมีคนช่วย ทักไลน์">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="th_TH">
 <meta property="og:title" content="Chachan STORY | ให้ Claude ใช้ TradingView MCP">
@@ -287,11 +287,14 @@ details > p{padding-bottom:14px; color:var(--muted); font-size:var(--step--1)}
 details > p + p{padding-top:0; margin-top:-6px}
 
 /* about + footer */
-.social{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-.social span{
-  font-size:var(--step--1); border:1px solid var(--line); background:var(--surface);
-  border-radius:999px; padding:6px 14px; color:var(--muted);
+/* line qr */
+.qr{display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,3vw,28px); margin-top:22px}
+.qr img{
+  width:170px; height:auto; flex:none; padding:10px; border-radius:14px;
+  border:1px solid var(--line); background:#FFFFFF; /* คงพื้นขาวทุกธีม ไม่งั้นสแกนไม่ติด */
 }
+.qr > div{flex:1 1 15rem; min-width:0}
+.qr .cta{margin-top:14px}
 footer{border-top:1px solid var(--line); padding-block:40px 120px; background:var(--paper)}
 footer p{font-size:var(--step--1); color:var(--muted); line-height:1.8}
 footer p + p{margin-top:12px}
@@ -333,7 +336,7 @@ footer a{color:var(--accent)}
     <h1>ถามเป็นภาษาไทยประโยคเดียว <span class="hi">แล้วให้ Claude ไปอ่านข้อมูล TradingView มาให้</span></h1>
     <p class="lede">คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude ทั้ง Chat และ Cowork ทำเองได้ใน 5 นาที ติดขัดก็นัดวิดีโอคอลให้ช่วยติดตั้งจนใช้งานได้</p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a>
+      <a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์</a>
       <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
     </div>
     <p class="note">เนื้อหาเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน</p>
@@ -583,7 +586,7 @@ footer a{color:var(--accent)}
       </ul>
       <div class="outcomes">
         <div class="outcome hi"><b>ครบทั้ง 3 ข้อ</b><span class="small">อ่านคู่มือฟรีแล้วลองทำเองได้เลย ไม่ต้องจ่ายอะไร</span><br><a href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">เปิดคู่มือฟรี</a></div>
-        <div class="outcome"><b>ติดขัดข้อไหน</b><span class="small">ทักไลน์มาคุยก่อน หรือนัดติดตั้งผ่านวิดีโอคอล 1 ชั่วโมง แล้วทำจนใช้งานได้</span><br><a href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์จองคิว</a></div>
+        <div class="outcome"><b>ติดขัดข้อไหน</b><span class="small">ทักไลน์มาคุยก่อน หรือนัดติดตั้งผ่านวิดีโอคอล 1 ชั่วโมง แล้วทำจนใช้งานได้</span><br><a href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์จองคิว</a></div>
       </div>
     </div>
   </div>
@@ -605,7 +608,7 @@ footer a{color:var(--accent)}
           <li>คู่มือฉบับเต็ม Claude Chat + Cowork กับ TradingView MCP</li>
           <li>อัปเดตฟรีเมื่อเนื้อหาเปลี่ยน</li>
         </ul>
-        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
+        <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
       </div>
       <div class="card">
         <h3>Bundle</h3>
@@ -615,7 +618,7 @@ footer a{color:var(--accent)}
           <li>ชุด Claude Skills 5 ชุด</li>
           <li>แผน Trading Journal</li>
         </ul>
-        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
+        <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
       </div>
       <div class="card">
         <h3>นัดติดตั้ง 1 ชม.</h3>
@@ -626,7 +629,7 @@ footer a{color:var(--accent)}
           <li>ติดตั้งจนใช้งานได้จริง</li>
           <li>สอน prompt พื้นฐาน</li>
         </ul>
-        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">จองคิวทางไลน์</a>
+        <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">จองคิวทางไลน์</a>
       </div>
       <div class="card best">
         <span class="tag">คุ้มสุด</span>
@@ -637,7 +640,7 @@ footer a{color:var(--accent)}
           <li>Bundle ทั้งหมด (Ebook + Skills + Journal)</li>
           <li>นัดติดตั้ง 1 ชั่วโมง</li>
         </ul>
-        <a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">เลือก Full ทางไลน์</a>
+        <a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">เลือก Full ทางไลน์</a>
       </div>
     </div>
 
@@ -654,12 +657,12 @@ footer a{color:var(--accent)}
     <h2 style="font-size:var(--step-3); margin-top:12px">จองได้ใน 3 ขั้นตอน</h2>
     <p class="lede" style="margin-top:14px">ไม่ต้องเปิดกล้องให้เห็นหน้าก็ได้ แชร์หน้าจอก็พอ</p>
     <div class="steps">
-      <div class="step"><b>ทักไลน์ @pluggy00</b><p>บอกว่าใช้ระบบอะไร และเลือกวันเวลาที่สะดวก</p></div>
+      <div class="step"><b>ทักไลน์</b><p>บอกว่าใช้ระบบอะไร และเลือกวันเวลาที่สะดวก</p></div>
       <div class="step"><b>ชำระผ่าน PromptPay ทางไลน์</b><p>ชำระก่อนนัด เราจะส่ง QR ให้ในแชตเท่านั้น</p></div>
       <div class="step"><b>วิดีโอคอล 1 ชั่วโมง</b><p>ติดตั้งไปพร้อมกันจนใช้งานได้ พร้อมลองใช้ prompt พื้นฐาน</p></div>
     </div>
         <p class="small" style="margin-top:22px">นัดเวลาไหนก็คุยกันในไลน์ได้ เลื่อนนัดได้ฟรี 1 ครั้ง โดยแจ้งล่วงหน้า 24 ชั่วโมง</p>
-    <div class="cta"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
+    <div class="cta"><a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์</a></div>
   </div>
 </section>
 
@@ -680,7 +683,7 @@ footer a{color:var(--accent)}
       <p><strong>เลื่อนนัด</strong> แจ้งล่วงหน้าอย่างน้อย 24 ชั่วโมง เลื่อนฟรี 1 ครั้ง ถ้าไม่มาตามนัดโดยไม่แจ้ง ถือว่าใช้สิทธิ์นัดนั้นแล้ว</p>
     </details>
     <details><summary>ส่งไฟล์ Ebook ให้ทางไหน</summary>
-      <p>ส่งทางไลน์ @pluggy00 หลังชำระเงินผ่าน PromptPay เราจะไม่ประกาศเลขบัญชีในสื่อสาธารณะ ระวังมิจฉาชีพแอบอ้าง ให้ทักเฉพาะไอดีนี้</p>
+      <p>ส่งทางไลน์หลังชำระเงินผ่าน PromptPay เราจะไม่ประกาศเลขบัญชีในสื่อสาธารณะ ระวังมิจฉาชีพแอบอ้าง ให้ทักเฉพาะไอดีนี้</p>
     </details>
     <details><summary>ปลอดภัยไหม ต้องให้รหัสผ่าน TradingView ไหม</summary>
       <p>ไม่ต้อง และเราจะไม่ขอรหัสผ่านของคุณ การเชื่อมต่อใช้ OAuth คุณล็อกอินเองบนหน้าของ TradingView ไม่ต้องใช้ API key ตอนนัดติดตั้งคุณเป็นคนกรอกข้อมูลเข้าสู่ระบบเอง</p>
@@ -696,10 +699,13 @@ footer a{color:var(--accent)}
     <span class="eyebrow">ติดต่อ</span>
     <h2 style="font-size:var(--step-2); margin-top:12px">ถามก่อนได้ ไม่ต้องซื้อก็ทักได้</h2>
     <p class="lede" style="margin-top:14px">ไม่แน่ใจว่าแพ็กเกจไหนเหมาะ หรือติดตรงไหนอยู่ ทักมาถามก่อนได้เลย</p>
-    <div class="social">
-      <span>LINE: @pluggy00</span>
+    <div class="qr">
+      <img src="line-qr.jpg" width="900" height="900" alt="QR code สำหรับเพิ่มเพื่อนทางไลน์" loading="lazy">
+      <div>
+        <p class="small">สแกน QR นี้ด้วยแอปไลน์เพื่อเพิ่มเพื่อน ถ้าอ่านหน้านี้จากมือถืออยู่แล้วกดปุ่มด้านล่างได้เลย</p>
+        <div class="cta"><a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์</a></div>
+      </div>
     </div>
-    <div class="cta"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
   </div>
 </section>
 
@@ -709,11 +715,11 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <p><strong>ข้อจำกัดความรับผิดชอบ</strong> เนื้อหาและบริการของ Chachan STORY เป็นความรู้เพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลและตัดสินใจด้วยตนเอง</p>
     <p>Chachan STORY ไม่มีส่วนเกี่ยวข้อง ไม่ได้รับการรับรอง หรือสนับสนุนโดย TradingView หรือ Anthropic ชื่อ TradingView และ Claude เป็นเครื่องหมายการค้าของเจ้าของนั้นๆ เว็บไซต์นี้ไม่ได้ใช้โลโก้ของบริษัทดังกล่าว</p>
-    <p>&copy; Chachan STORY | ติดต่อทางไลน์ <a href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">@pluggy00</a></p>
+    <p>&copy; Chachan STORY | ติดต่อ<a href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทางไลน์</a></p>
   </div>
 </footer>
 
-<div class="sticky"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
+<div class="sticky"><a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์</a></div>
 
 <script>
 (function(){
