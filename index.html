@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chachan STORY | ให้ Claude ใช้ TradingView MCP</title>
+<meta name="description" content="คู่มือ ebook และบริการนัดติดตั้ง TradingView MCP Server กับ Claude ทำเองได้ใน ~5 นาที ติดขัดมีคนช่วย ทักไลน์ @pluggy00">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="Chachan STORY | ให้ Claude ใช้ TradingView MCP">
+<meta property="og:description" content="ให้ Claude ดึงข้อมูล TradingView มาช่วยวิเคราะห์ ทำเองได้ใน ~5 นาที ติดขัดก็มีคนช่วย">
+<meta property="og:url" content="[WEBSITE_URL]">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23B4520C%27/%3E%3Crect x=%2714%27 y=%2734%27 width=%278%27 height=%2716%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2728%27 y=%2724%27 width=%278%27 height=%2726%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2742%27 y=%2714%27 width=%278%27 height=%2736%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
+<meta property="og:image" content="[WEBSITE_URL]og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "คู่มือและบริการติดตั้ง TradingView MCP กับ Claude",
+  "brand": {"@type": "Brand", "name": "Chachan STORY"},
+  "description": "คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude และบริการนัดติดตั้งผ่านวิดีโอคอล",
+  "url": "[WEBSITE_URL]",
+  "offers": [
+    {"@type": "Offer", "name": "Ebook", "price": "349", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
+    {"@type": "Offer", "name": "Bundle", "price": "690", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
+    {"@type": "Offer", "name": "นัดติดตั้ง 1 ชั่วโมง", "price": "499", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
+    {"@type": "Offer", "name": "Full", "price": "990", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"}
+  ]
+}
+</script>
+<style>
+:root{
+  --paper:#FDF8F0; --surface:#FFFFFF; --sunken:#F7EDDF; --ink:#2A1A0E; --muted:#7A6552;
+  --line:#E8D9C5; --line-soft:#F2E7D7; --accent:#B4520C; --accent-ink:#FFFFFF; --accent-soft:#FDEBD8;
+  --ochre:#8A4A00; --ochre-bg:#FBEEDA; --ochre-line:#EFD9B4;
+  --success:#A8123C; --success-soft:#FCE4EB; --gold:#9A7213;
+  --rail:#D9C3A5;
+  --measure:44rem; --wide:66rem;
+  --step--1:clamp(.82rem,.79rem + .14vw,.9rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.08rem);
+  --step-1:clamp(1.15rem,1.08rem + .35vw,1.3rem);
+  --step-2:clamp(1.4rem,1.26rem + .7vw,1.75rem);
+  --step-3:clamp(1.75rem,1.5rem + 1.25vw,2.5rem);
+  --step-4:clamp(2.1rem,1.6rem + 2.4vw,3.4rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1A1008; --surface:#241709; --sunken:#150D06; --ink:#F7EBDC; --muted:#BCA890;
+    --line:#3A2817; --line-soft:#2A1B0D; --accent:#F0913F; --accent-ink:#2A1A0E; --accent-soft:#33200E;
+    --ochre:#F2B860; --ochre-bg:#2B1C09; --ochre-line:#4A3315;
+    --success:#FF7A9C; --success-soft:#33121C; --gold:#E3B04B;
+    --rail:#4A3620;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1A1008; --surface:#241709; --sunken:#150D06; --ink:#F7EBDC; --muted:#BCA890;
+  --line:#3A2817; --line-soft:#2A1B0D; --accent:#F0913F; --accent-ink:#2A1A0E; --accent-soft:#33200E;
+  --ochre:#F2B860; --ochre-bg:#2B1C09; --ochre-line:#4A3315;
+  --success:#FF7A9C; --success-soft:#33121C; --gold:#E3B04B;
+  --rail:#4A3620;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  font-size:var(--step-0); font-weight:400; line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{line-height:1.3; text-wrap:balance; margin:0; font-weight:700; letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+.wrap{width:100%; max-width:var(--measure); margin-inline:auto; padding-inline:20px}
+.wrap-wide{width:100%; max-width:var(--wide); margin-inline:auto; padding-inline:20px}
+section{padding-block:clamp(56px,8vw,104px)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--step--1);
+  letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:500;
+}
+.lede{color:var(--muted); font-weight:300; font-size:var(--step-1); line-height:1.7}
+.small{font-size:var(--step--1); color:var(--muted); line-height:1.7}
+
+/* header */
+.top{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line-soft);
+}
+.top .wrap-wide{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em}
+.mark{width:22px; height:22px; flex:none; display:block}
+.top nav{display:flex; gap:20px; font-size:var(--step--1)}
+.top nav a{color:var(--muted); text-decoration:none; padding-block:6px}
+.top nav a:hover{color:var(--accent)}
+@media (max-width:640px){ .top nav a:not(.keep){display:none} }
+
+/* hero */
+.hero{padding-block:clamp(48px,7vw,96px) clamp(40px,6vw,72px)}
+.hero h1{font-size:var(--step-4); margin-block:18px 0}
+.hero h1 .hi{color:var(--accent)}
+.hero .lede{margin-top:20px; max-width:34rem}
+.cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; min-height:50px;
+  padding:12px 26px; border-radius:999px; text-decoration:none; font-weight:600;
+  border:1.5px solid transparent; transition:transform .15s ease, background .15s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent); color:var(--accent-ink)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:var(--surface)}
+.btn-ghost:hover{border-color:var(--accent); color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.note{margin-top:14px; font-size:var(--step--1); color:var(--muted)}
+
+/* hero mechanism strip */
+.mech{
+  margin-top:40px; display:grid; gap:1px; background:var(--line-soft);
+  border:1px solid var(--line-soft); border-radius:14px; overflow:hidden;
+}
+@media (min-width:720px){ .mech{grid-template-columns:repeat(3,1fr)} }
+.mech > div{background:var(--surface); padding:18px 20px}
+.mech b{display:block; font-size:var(--step--1); color:var(--muted); font-weight:400; margin-bottom:4px}
+.mech span{font-weight:600}
+
+/* cases */
+.cases{background:var(--sunken); border-block:1px solid var(--line-soft)}
+.cases-head{max-width:38rem; margin-bottom:clamp(32px,4vw,52px)}
+.cases-head h2{font-size:var(--step-3); margin-top:12px}
+.cases-head p{margin-top:14px}
+.caselist{
+  display:grid; grid-auto-flow:column; grid-auto-columns:86%;
+  gap:16px; overflow-x:auto; scroll-snap-type:x mandatory;
+  overscroll-behavior-x:contain; scroll-behavior:smooth;
+  align-items:start;
+  padding-block:4px; margin-inline:-20px; padding-inline:20px;
+  scrollbar-width:none;
+}
+.caselist::-webkit-scrollbar{display:none}
+@media (min-width:700px){ .caselist{grid-auto-columns:min(94%,56rem); gap:20px} }
+.case{
+  scroll-snap-align:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:clamp(22px,3vw,34px); display:grid; gap:22px; align-content:start;
+}
+@media (min-width:900px){ .case{grid-template-columns:minmax(0,19rem) minmax(0,1fr); gap:40px} }
+/* carousel controls */
+.cnav{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:22px}
+.cbtn{
+  width:44px; height:44px; flex:none; border-radius:999px; cursor:pointer;
+  border:1.5px solid var(--line); background:var(--surface); color:var(--ink);
+  font-size:1.1rem; line-height:1; display:grid; place-items:center;
+}
+.cbtn:hover:not(:disabled){border-color:var(--accent); color:var(--accent)}
+.cbtn:disabled{opacity:.35; cursor:default}
+.cbtn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.dots{display:flex; gap:9px; align-items:center}
+.dot{
+  width:9px; height:9px; padding:0; border:0; border-radius:999px; cursor:pointer;
+  background:var(--rail); transition:width .2s ease, background .2s ease;
+}
+.dot[aria-selected="true"]{width:26px; background:var(--accent)}
+.dot:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.ccount{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--step--1);
+  color:var(--muted); min-width:7.5em; text-align:center;
+}
+.swipehint{text-align:center; margin-top:10px}
+@media (prefers-reduced-motion:reduce){ .caselist{scroll-behavior:auto} }
+.case-idx{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:var(--step--1);
+  letter-spacing:.1em; color:var(--muted); display:flex; align-items:center; gap:10px;
+}
+.case-idx i{width:26px; height:1px; background:var(--rail); display:block; font-style:normal}
+.case h3{font-size:var(--step-2); margin-top:10px}
+.case .pain{margin-top:12px; color:var(--muted); font-weight:300}
+.beat + .beat{margin-top:20px}
+.beat > b{
+  display:block; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.76rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500; margin-bottom:8px;
+}
+.prompt{
+  border-left:2px solid var(--accent); background:var(--sunken);
+  padding:14px 16px; border-radius:0 10px 10px 0; line-height:1.7;
+}
+.warn{
+  margin-top:20px; background:var(--ochre-bg); border:1px solid var(--ochre-line);
+  border-radius:10px; padding:14px 16px; font-size:var(--step--1); line-height:1.7;
+}
+.warn b{color:var(--ochre); display:block; margin-bottom:6px}
+.warn ul{margin:0; padding-left:18px}
+.cases-foot{margin-top:28px}
+
+/* checklist */
+.check{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:clamp(20px,3vw,30px); margin-top:26px}
+.check ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.check li{display:flex; gap:12px; align-items:flex-start}
+.check svg{flex:none; margin-top:5px}
+.outcomes{display:grid; gap:14px; margin-top:22px}
+@media (min-width:700px){ .outcomes{grid-template-columns:1fr 1fr} }
+.outcome{border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:var(--surface)}
+.outcome.hi{border-color:var(--accent); background:var(--accent-soft)}
+.outcome b{display:block; margin-bottom:4px}
+.outcome a{color:var(--accent); font-weight:600}
+
+/* price */
+.price-sec{background:var(--sunken); border-block:1px solid var(--line-soft)}
+.promo{
+  background:var(--ochre-bg); border:1px solid var(--ochre-line); border-radius:12px;
+  padding:16px 18px; margin-top:22px; font-size:var(--step--1); line-height:1.7;
+}
+.promo b{color:var(--ochre)}
+.grid4{display:grid; gap:16px; margin-top:22px}
+@media (min-width:640px){ .grid4{grid-template-columns:1fr 1fr} }
+@media (min-width:1000px){ .grid4{grid-template-columns:repeat(4,1fr)} }
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:24px 22px; display:flex; flex-direction:column; gap:14px;
+}
+.card.best{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+.card h3{font-size:var(--step-1)}
+.tag{
+  align-self:flex-start; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+  font-family:"IBM Plex Mono",monospace; background:var(--success); color:var(--surface);
+  padding:3px 9px; border-radius:999px;
+}
+.amt{font-size:var(--step-3); font-weight:700; font-variant-numeric:tabular-nums; line-height:1.1}
+.amt small{font-size:var(--step-0); font-weight:400; color:var(--muted)}
+.was{font-size:var(--step--1); color:var(--success); font-weight:600}
+.card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; font-size:var(--step--1); color:var(--muted); flex:1}
+.card ul li{padding-left:16px; position:relative}
+.card ul li::before{content:""; position:absolute; left:0; top:.62em; width:6px; height:6px; border-radius:50%; background:var(--rail)}
+.card .btn{width:100%}
+.freebar{
+  margin-top:18px; background:var(--surface); border:1px dashed var(--line);
+  border-radius:14px; padding:20px; display:flex; flex-wrap:wrap; gap:14px;
+  align-items:center; justify-content:space-between;
+}
+
+/* booking */
+.steps{counter-reset:s; display:grid; gap:14px; margin-top:24px}
+@media (min-width:820px){ .steps{grid-template-columns:repeat(3,1fr)} }
+.step{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px}
+.step::before{
+  counter-increment:s; content:counter(s,decimal-leading-zero);
+  font-family:"IBM Plex Mono",monospace; color:var(--accent); font-size:var(--step--1); letter-spacing:.08em;
+}
+.step b{display:block; margin-top:8px}
+.step p{margin-top:6px; color:var(--muted); font-size:var(--step--1)}
+
+/* faq */
+.faq-sec{background:var(--sunken); border-block:1px solid var(--line-soft)}
+details{border-bottom:1px solid var(--line); padding-block:6px}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{
+  cursor:pointer; list-style:none; padding-block:16px; font-weight:600;
+  display:flex; justify-content:space-between; gap:16px; align-items:flex-start;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; color:var(--accent); font-weight:400; font-size:1.3rem; line-height:1.2}
+details[open] summary::after{content:"\2013"}
+details > p{padding-bottom:14px; color:var(--muted); font-size:var(--step--1)}
+details > p + p{padding-top:0; margin-top:-6px}
+
+/* about + footer */
+.social{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+.social span{
+  font-size:var(--step--1); border:1px solid var(--line); background:var(--surface);
+  border-radius:999px; padding:6px 14px; color:var(--muted);
+}
+footer{border-top:1px solid var(--line); padding-block:40px 120px; background:var(--paper)}
+footer p{font-size:var(--step--1); color:var(--muted); line-height:1.8}
+footer p + p{margin-top:12px}
+footer a{color:var(--accent)}
+
+/* sticky mobile bar */
+.sticky{
+  position:fixed; left:0; right:0; bottom:0; z-index:30;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(10px); border-top:1px solid var(--line);
+}
+.sticky .btn{width:100%}
+@media (min-width:860px){ .sticky{display:none} footer{padding-bottom:56px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap-wide">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="currentColor" opacity=".12"></rect><rect x="14" y="34" width="8" height="16" rx="3" fill="currentColor"></rect><rect x="28" y="24" width="8" height="26" rx="3" fill="currentColor"></rect><rect x="42" y="14" width="8" height="36" rx="3" fill="currentColor"></rect></svg>
+      Chachan STORY
+    </div>
+    <nav>
+      <a href="#cases">5 เคสใช้งานจริง</a>
+      <a href="#diy">ทำเองได้ไหม</a>
+      <a class="keep" href="#price">ราคา</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">TradingView MCP + Claude</span>
+    <h1>ถามเป็นภาษาไทยประโยคเดียว <span class="hi">แล้วให้ Claude ไปอ่านข้อมูล TradingView มาให้</span></h1>
+    <p class="lede">คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude ทั้ง Chat และ Cowork ทำเองได้ใน 5 นาที ติดขัดก็นัดวิดีโอคอลให้ช่วยติดตั้งจนใช้งานได้</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a>
+      <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
+    </div>
+    <p class="note">เนื้อหาเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน</p>
+
+    <div class="mech">
+      <div><b>คุณพิมพ์</b><span>คำถามภาษาไทยธรรมดา</span></div>
+      <div><b>Claude ไปดึง</b><span>ข้อมูลจริงในบัญชี TradingView ของคุณ</span></div>
+      <div><b>คุณได้</b><span>คำตอบที่อ้างข้อมูลจริงในบัญชีคุณ</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="cases" id="cases">
+  <div class="wrap-wide">
+    <div class="cases-head">
+      <span class="eyebrow">ทำอะไรได้บ้าง</span>
+      <h2>5 เคสที่คนถามถึงบ่อยที่สุด</h2>
+      <p class="lede">ทุกเคสคือคำสั่งที่พิมพ์ได้จริงหลังเชื่อมต่อเสร็จ ก๊อปไปวางได้เลย ผมไม่ได้เอาผลลัพธ์สมมติมาโชว์ เพราะตัวเลขขึ้นกับตลาดและบัญชีของคุณเอง</p>
+      <p class="small" style="margin-top:12px">ทั้ง 5 เคสผ่านการยิงจริงกับบัญชีที่ต่อ MCP แล้ว เมื่อ 20 กันยายน 2569 ข้อความในกรอบสีส้มคือสิ่งที่เจอตอนลองจริง ซึ่งคู่มือทั่วไปไม่ได้บอกไว้</p>
+    </div>
+
+    <div class="carousel" role="region" aria-roledescription="แถบเลื่อน" aria-label="5 เคสใช้งานจริง">
+      <div class="caselist" id="caselist" tabindex="0">
+
+      <article class="case" id="case-1" data-label="เช้าตลาด">
+        <div>
+          <div class="case-idx"><i></i>เคส 01 — เช้าตลาด</div>
+          <h3>เปิดกราฟ 20 แท็บ หรือถามประโยคเดียว</h3>
+          <p class="pain">กว่าจะไล่เปิดกราฟครบทุกตัวใน watchlist ตลาดก็เปิดไปแล้ว และมักดูไม่ครบ</p>
+        </div>
+        <div>
+          <div class="beat">
+            <b>พิมพ์แค่นี้</b>
+            <p class="prompt">ดู watchlist ที่ active ของฉัน แล้วสรุปเป็นตารางภาษาไทยว่าแต่ละตัวราคาล่าสุดเท่าไร เปลี่ยนแปลงกี่เปอร์เซ็นต์ วอลุ่มผิดปกติไหม แล้วบอกท้ายตารางด้วยว่าวันนี้มีข่าวเศรษฐกิจอะไรที่ต้องระวัง</p>
+          </div>
+          <div class="beat">
+            <b>ข้อมูลมาจากไหน</b>
+            <p class="small">watchlist ที่คุณใช้อยู่ · ราคาและวอลุ่มล่าสุด · ปฏิทินเศรษฐกิจ ทั้งหมดดึงสดจากบัญชีและข้อมูลของ TradingView</p>
+          </div>
+          <div class="beat">
+            <b>ได้อะไรกลับมา</b>
+            <p>ตารางเดียวจบครบทุกตัวในลิสต์ เรียงตามที่สั่ง พร้อมบรรทัดสรุปว่าวันนี้มีอีเวนต์เศรษฐกิจอะไรรออยู่ อยากเจาะตัวไหนต่อก็ถามต่อในแชตเดิมได้เลย ถามทีเดียวได้ทั้งลิสต์</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-2" data-label="คัดหุ้น">
+        <div>
+          <div class="case-idx"><i></i>เคส 02 — คัดหุ้น</div>
+          <h3>ไม่รู้จักชื่อฟิลเตอร์สักตัว ก็สกรีนหุ้นได้</h3>
+          <p class="pain">หน้าสกรีนเนอร์มีคอลัมน์ให้เลือกเป็นร้อย กว่าจะตั้งเงื่อนไขถูกก็ท้อไปก่อน</p>
+        </div>
+        <div>
+          <div class="beat">
+            <b>พิมพ์แค่นี้</b>
+            <p class="prompt">หาหุ้นตลาดอเมริกาที่ย่อลงมาแล้วเริ่มกลับตัว โดยกรองมาร์เก็ตแคปมากกว่าหนึ่งหมื่นล้านดอลลาร์ และวอลุ่มเฉลี่ยมากกว่าหนึ่งล้านหุ้น เอา 15 ตัวแรก แล้วอธิบายเป็นภาษาไทยด้วยว่าเงื่อนไขที่ใช้คัดคืออะไรบ้าง</p>
+          </div>
+          <div class="beat">
+            <b>ข้อมูลมาจากไหน</b>
+            <p class="small">ระบบคัดกรองหุ้นของ TradingView ตัวเดียวกับที่คุณเปิดใช้เองในเว็บ</p>
+          </div>
+          <div class="beat">
+            <b>ได้อะไรกลับมา</b>
+            <p>รายชื่อหุ้นพร้อมคอลัมน์ที่ขอ และคำอธิบายว่าสูตรคัดกรองสำเร็จรูปที่ใช้ มีเงื่อนไขอะไรบ้าง คือได้ผลลัพธ์พร้อมได้ความรู้ไปด้วย ครั้งหน้าปรับเงื่อนไขเองเป็น</p>
+            <p style="margin-top:10px">ใช้กับ <strong>ตลาดหุ้นไทยได้ด้วย</strong> แค่บอกว่าให้สกรีนตลาดไทย</p>
+          </div>
+          <div class="warn">
+            <b>บทเรียนจากการลองจริง</b>
+            <p>ถ้าสั่งแค่ชื่อพรีเซ็ตเฉยๆ โดยไม่ใส่เงื่อนไขกรอง ผลที่ได้จะมีหุ้นราคาต่ำกว่าหนึ่งสตางค์และกองทุนตลาดเงินปนมาด้วย ต้องบอกมาร์เก็ตแคปและวอลุ่มขั้นต่ำเสมอ และผลสกรีนคือจุดตั้งต้นให้ไปดูกราฟต่อ ไม่ใช่รายการที่ควรซื้อ</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-3" data-label="อ่านงบ">
+        <div>
+          <div class="case-idx"><i></i>เคส 03 — อ่านงบ</div>
+          <h3>งบตัวจริงสองร้อยหน้า สรุปไทยห้าบรรทัด</h3>
+          <p class="pain">อยากอ่านจากต้นทาง แต่เป็นอังกฤษล้วน เลยได้อ่านแต่ข่าวสรุปของคนอื่นที่ไม่รู้ว่าตัดอะไรทิ้ง</p>
+        </div>
+        <div>
+          <div class="beat">
+            <b>พิมพ์แค่นี้</b>
+            <p class="prompt">ดึงรายงานประจำปีล่าสุดของ NASDAQ:AAPL มา แล้วสรุปเป็นภาษาไทยว่ารายได้มาจากส่วนไหนบ้าง บริษัทระบุความเสี่ยงหลักว่าอะไร และผู้บริหารพูดถึงแนวโน้มข้างหน้าอย่างไร อ้างอิงหัวข้อในเอกสารกำกับมาด้วยทุกข้อ</p>
+          </div>
+          <div class="beat">
+            <b>ข้อมูลมาจากไหน</b>
+            <p class="small">รายงานประจำปี รายงานไตรมาส และบทถอดเสียงประชุมนักวิเคราะห์ จากต้นทางโดยตรง</p>
+          </div>
+          <div class="beat">
+            <b>ได้อะไรกลับมา</b>
+            <p>สรุปภาษาไทยที่อ้างอิงเอกสารต้นทางจริง ทั้ง 10-K, 10-Q และบทถอดเสียงประชุมนักวิเคราะห์ ไม่ใช่ความเห็นลอยๆ อยากเช็กว่าสรุปถูกไหม เปิดหัวข้อที่อ้างกลับไปดูได้</p>
+          </div>
+          <p class="small" style="margin-top:14px">ให้ Claude อ้างอิงเสมอ แล้วสุ่มเช็กกลับสัก 1-2 จุด นี่คือวิธีจับว่า AI มั่วหรือไม่</p>
+        </div>
+      </article>
+
+      <article class="case" id="case-4" data-label="ข่าว">
+        <div>
+          <div class="case-idx"><i></i>เคส 04 — ข่าว</div>
+          <h3>ข่าวหุ้นไทยเป็นภาษาไทย ข่าวหุ้นนอกให้ Claude แปลให้</h3>
+          <p class="pain">ข่าวที่ขยับราคามักมาก่อนบทวิเคราะห์ แต่ไล่เปิดทีละสำนักและแปลเองไม่ทันตลาด</p>
+        </div>
+        <div>
+          <div class="beat">
+            <b>หุ้นไทย พิมพ์แค่นี้</b>
+            <p class="prompt">ขอข่าวล่าสุดของ SET:AOT เป็นภาษาไทย 5 ข่าว แล้วสรุปให้ว่าข่าวไหนน่าจะกระทบราคามากที่สุด เปิดตัวเต็มของข่าวนั้นมาให้อ่านด้วย</p>
+          </div>
+          <div class="beat">
+            <b>หุ้นต่างประเทศ พิมพ์แค่นี้</b>
+            <p class="prompt">ขอข่าวล่าสุดของ NASDAQ:AAPL มา 5 ข่าว แล้วแปลหัวข้อกับสรุปใจความเป็นภาษาไทยให้ พร้อมบอกว่าข่าวไหนน่าจะกระทบราคามากที่สุด</p>
+          </div>
+          <div class="beat">
+            <b>ข้อมูลมาจากไหน</b>
+            <p class="small">ฟีดข่าวของ TradingView หุ้นไทยมาจากสำนักข่าวไทย หุ้นต่างประเทศมาจากสำนักข่าวต่างประเทศ</p>
+          </div>
+          <div class="beat">
+            <b>ได้อะไรกลับมา</b>
+            <p>หุ้นไทยได้ข่าวภาษาไทยจากสำนักข่าวไทยโดยตรง และเปิดอ่านเนื้อข่าวตัวเต็มได้ ส่วนหุ้นต่างประเทศได้ข่าวอังกฤษแล้ว Claude แปลและสรุปเป็นไทยให้ในคำตอบเดียว ไม่ต้องก๊อปไปแปลทีละอัน</p>
+          </div>
+          <div class="warn">
+            <b>บทเรียนจากการลองจริง</b>
+            <p>การตั้งภาษาเป็นไทยคือการเลือก<strong>สำนักข่าวภาษาไทย</strong> ไม่ใช่การแปลอัตโนมัติ ถ้าสั่งขอข่าวภาษาไทยของหุ้นอเมริกาจะได้ศูนย์ข่าว เพราะไม่มีสำนักข่าวไทยเขียนถึง ต้องดึงข่าวอังกฤษแล้วให้ Claude แปลแทน และการจัดอันดับว่าข่าวไหนสำคัญคือการประเมินของ AI ไม่ใช่ข้อเท็จจริง</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="case-5" data-label="แจ้งเตือน">
+        <div>
+          <div class="case-idx"><i></i>เคส 05 — แจ้งเตือน</div>
+          <h3>ตั้งเตือนทั้งลิสต์ในประโยคเดียว</h3>
+          <p class="pain">กดตั้ง alert ทีละตัวสามสิบครั้ง พอผ่านไปสองสัปดาห์ก็จำไม่ได้แล้วว่าตั้งอะไรไว้ และเด้งไปกี่ครั้ง</p>
+        </div>
+        <div>
+          <div class="beat">
+            <b>พิมพ์ตอนตั้ง</b>
+            <p class="prompt">ตั้งเตือนให้หุ้นในลิสต์นี้เมื่อราคาตัดขึ้นผ่านราคาที่ฉันระบุ ตั้งวันหมดอายุ 30 วัน เปิดแจ้งเตือนเข้ามือถือ ก่อนสร้างจริงขอดูรายการทั้งหมดที่จะสร้างก่อน</p>
+          </div>
+          <div class="beat">
+            <b>พิมพ์ตอนทบทวนสิ้นสัปดาห์</b>
+            <p class="prompt">สัปดาห์นี้ alert ของฉันเด้งไปกี่ครั้ง ตัวไหนบ้าง แล้วตอนนี้ยังมี alert อะไรค้างอยู่ในระบบ สรุปเป็นตารางให้หน่อย</p>
+          </div>
+          <div class="beat">
+            <b>ข้อมูลมาจากไหน</b>
+            <p class="small">ระบบแจ้งเตือนในบัญชี TradingView ของคุณเอง เตือนเข้ามือถือเหมือนที่ตั้งเองทุกอย่าง</p>
+          </div>
+          <div class="warn">
+            <b>เคสนี้ต้องรู้ก่อนใช้</b>
+            <ul>
+              <li>คำสั่งตั้งเตือนจะเข้าไปแก้บัญชีคุณจริง ให้สั่งขอดูรายการทั้งหมดก่อนเสมอ แล้วค่อยกดยืนยัน</li>
+              <li>เงื่อนไข สัญลักษณ์ และไทม์เฟรมของ alert แก้ทีหลังไม่ได้ ต้องลบแล้วสร้างใหม่</li>
+              <li>วิธีนี้ตั้งได้เฉพาะเงื่อนไขราคาแบบตรงไปตรงมา เงื่อนไขซับซ้อนยังต้องไปตั้งในแอปเอง</li>
+              <li>ถ้าจะให้ยิงต่อไประบบอื่นอัตโนมัติ ต้องมีแพ็กเกจที่รองรับและเปิดยืนยันตัวตนสองชั้น</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+      <div class="cnav">
+        <button class="cbtn" type="button" id="cprev" aria-label="เคสก่อนหน้า" aria-controls="caselist">&#8592;</button>
+        <div class="dots" id="cdots" role="tablist" aria-label="เลือกเคส"></div>
+        <button class="cbtn" type="button" id="cnext" aria-label="เคสถัดไป" aria-controls="caselist">&#8594;</button>
+      </div>
+      <p class="small swipehint" id="ccount">เคส 1 จาก 5 — ปัดซ้ายเพื่อดูเคสถัดไป</p>
+    </div>
+
+    <p class="small cases-foot">ทุกเคสต้องมีแพ็กเกจ TradingView ระดับ Essential ขึ้นไป (แพ็กเกจทดลองใช้ MCP ไม่ได้) และบัญชี Claude ระบบเชื่อมต่อนี้ยังเป็นเวอร์ชันทดลอง ฟีเจอร์อาจเปลี่ยนได้ และถามรัวๆ ติดกันมากเกินไปจะถูกจำกัดชั่วคราว</p>
+  </div>
+</section>
+
+<section id="diy">
+  <div class="wrap">
+    <span class="eyebrow">ก่อนจ่ายเงินให้ใคร</span>
+    <h2 style="font-size:var(--step-3); margin-top:12px">ทำเองได้ไหม</h2>
+    <p class="lede" style="margin-top:14px">ตอบตามจริงกับตัวเองก่อน จะได้ไม่เสียเวลาและเงินโดยไม่จำเป็น</p>
+    <div class="check">
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.2" fill="none" stroke="currentColor" stroke-opacity=".28"></circle><path d="M5 9.3l2.6 2.6L13 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>มีแพ็กเกจ TradingView <strong>Essential ขึ้นไป</strong> (แพ็กเกจทดลองใช้ไม่มีสิทธิ์ใช้ MCP)</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.2" fill="none" stroke="currentColor" stroke-opacity=".28"></circle><path d="M5 9.3l2.6 2.6L13 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>มีบัญชี <strong>Claude</strong> อยู่แล้ว</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.2" fill="none" stroke="currentColor" stroke-opacity=".28"></circle><path d="M5 9.3l2.6 2.6L13 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>ทำตามขั้นตอนทีละข้อได้ (กดเมนู คัดลอกลิงก์ ล็อกอิน)</span></li>
+      </ul>
+      <div class="outcomes">
+        <div class="outcome hi"><b>ครบทั้ง 3 ข้อ</b><span class="small">อ่านคู่มือฟรีแล้วลองทำเองได้เลย ไม่ต้องจ่ายอะไร</span><br><a href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">เปิดคู่มือฟรี</a></div>
+        <div class="outcome"><b>ติดขัดข้อไหน</b><span class="small">ทักไลน์มาคุยก่อน หรือนัดติดตั้งผ่านวิดีโอคอล 1 ชั่วโมง แล้วทำจนใช้งานได้</span><br><a href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์จองคิว</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price-sec" id="price">
+  <div class="wrap-wide">
+    <span class="eyebrow">สินค้าและราคา</span>
+    <h2 style="font-size:var(--step-3); margin-top:12px">เลือกเท่าที่ต้องใช้</h2>
+    <p class="lede" style="margin-top:14px">ราคาเป็นบาท ชำระผ่าน PromptPay ทางไลน์ และส่งไฟล์ให้ทางไลน์</p>
+
+    <div class="promo"><b>โปรช่วงเปิดตัว สำหรับลูกค้า 10 คนแรก</b> บริการติดตั้ง 1 ชม. เหลือ 299 บาท และแพ็กเต็ม (Full) เหลือ 790 บาท เพื่อขอรีวิวจากผู้ใช้จริง หลังจากนั้นกลับเป็นราคาปกติ</div>
+
+    <div class="grid4">
+      <div class="card">
+        <h3>Ebook คู่มือ</h3>
+        <div class="amt">349 <small>บาท</small></div>
+        <ul>
+          <li>คู่มือฉบับเต็ม Claude Chat + Cowork กับ TradingView MCP</li>
+          <li>อัปเดตฟรีเมื่อเนื้อหาเปลี่ยน</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
+      </div>
+      <div class="card">
+        <h3>Bundle</h3>
+        <div class="amt">690 <small>บาท</small></div>
+        <ul>
+          <li>Ebook คู่มือฉบับเต็ม</li>
+          <li>ชุด Claude Skills 5 ชุด</li>
+          <li>แผน Trading Journal</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
+      </div>
+      <div class="card">
+        <h3>นัดติดตั้ง 1 ชม.</h3>
+        <div class="amt">499 <small>บาท</small></div>
+        <div class="was">โปร 299 บาท (10 คนแรก)</div>
+        <ul>
+          <li>วิดีโอคอล 1 ชั่วโมง</li>
+          <li>ติดตั้งจนใช้งานได้จริง</li>
+          <li>สอน prompt พื้นฐาน</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">จองคิวทางไลน์</a>
+      </div>
+      <div class="card best">
+        <span class="tag">คุ้มสุด</span>
+        <h3>Full</h3>
+        <div class="amt">990 <small>บาท</small></div>
+        <div class="was">โปร 790 บาท (10 คนแรก)</div>
+        <ul>
+          <li>Bundle ทั้งหมด (Ebook + Skills + Journal)</li>
+          <li>นัดติดตั้ง 1 ชั่วโมง</li>
+        </ul>
+        <a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">เลือก Full ทางไลน์</a>
+      </div>
+    </div>
+
+    <div class="freebar">
+      <div><b>ฟรี: คู่มือ Notion 3 หน้า + เช็กลิสต์ "ทำเองได้ไหม"</b><br><span class="small">เริ่มจากตรงนี้ก่อนก็ได้ ไม่ต้องจ่าย</span></div>
+      <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="wrap">
+    <span class="eyebrow">นัดติดตั้ง</span>
+    <h2 style="font-size:var(--step-3); margin-top:12px">จองได้ใน 3 ขั้นตอน</h2>
+    <p class="lede" style="margin-top:14px">ไม่ต้องเปิดกล้องให้เห็นหน้าก็ได้ แชร์หน้าจอก็พอ</p>
+    <div class="steps">
+      <div class="step"><b>ทักไลน์ @pluggy00</b><p>บอกว่าใช้ระบบอะไร และเลือกวันเวลาที่สะดวก</p></div>
+      <div class="step"><b>ชำระผ่าน PromptPay ทางไลน์</b><p>ชำระก่อนนัด เราจะส่ง QR ให้ในแชตเท่านั้น</p></div>
+      <div class="step"><b>วิดีโอคอล 1 ชั่วโมง</b><p>ติดตั้งไปพร้อมกันจนใช้งานได้ พร้อมลองใช้ prompt พื้นฐาน</p></div>
+    </div>
+        <p class="small" style="margin-top:22px">นัดเวลาไหนก็คุยกันในไลน์ได้ เลื่อนนัดได้ฟรี 1 ครั้ง โดยแจ้งล่วงหน้า 24 ชั่วโมง</p>
+    <div class="cta"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
+  </div>
+</section>
+
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">คำถามที่พบบ่อย</span>
+    <h2 style="font-size:var(--step-3); margin-top:12px; margin-bottom:26px">ถามมาก่อนจ่ายได้เลย</h2>
+
+    <details><summary>ต้องมีอะไรบ้างถึงจะใช้ได้</summary>
+      <p>ต้องมี TradingView แพ็กเกจ Essential ขึ้นไป (แพ็กเกจทดลองใช้ไม่มีสิทธิ์ใช้ MCP) และมีบัญชี Claude ส่วนวิธีเชื่อมต่อคือเพิ่ม Custom connector ใน Claude แล้วล็อกอิน TradingView ตามขั้นตอนในคู่มือ</p>
+    </details>
+    <details><summary>MCP ของ TradingView ยังเป็น Beta ต้องจ่ายอัปเดตเพิ่มไหม</summary>
+      <p>ตัวเซิร์ฟเวอร์เป็นเวอร์ชัน Beta ฟีเจอร์อาจเปลี่ยนได้ เราจะปรับคู่มือตามให้ ลูกค้า Ebook, Bundle และ Full ได้รับอัปเดตคู่มือฟรี</p>
+    </details>
+    <details><summary>ถ้าติดตั้งแล้วใช้ไม่ได้ ขอคืนเงินได้ไหม</summary>
+      <p><strong>บริการติดตั้ง</strong> ถ้าจบนัดแล้วยังใช้งานไม่ได้ และสาเหตุอยู่ที่ฝั่งเรา นัดแก้ให้ฟรีอีก 1 ครั้ง ถ้ายังไม่ได้อีก คืนค่าบริการติดตั้งเต็มจำนวน แต่ถ้าติดที่เงื่อนไขบัญชีของคุณเอง เช่น ยังเป็นแพ็กเกจทดลองที่ใช้ MCP ไม่ได้ จะไม่คืนเงิน เลื่อนนัดไปทำตอนพร้อมได้ 1 ครั้ง จึงอยากให้เช็กลิสต์ 3 ข้อด้านบนก่อนจอง</p>
+      <p><strong>Ebook และ Bundle</strong> เป็นไฟล์ดิจิทัล เมื่อส่งไฟล์แล้วไม่คืนเงิน แต่ถ้ายังไม่ได้ส่งไฟล์ ยกเลิกได้เต็มจำนวน</p>
+      <p><strong>เลื่อนนัด</strong> แจ้งล่วงหน้าอย่างน้อย 24 ชั่วโมง เลื่อนฟรี 1 ครั้ง ถ้าไม่มาตามนัดโดยไม่แจ้ง ถือว่าใช้สิทธิ์นัดนั้นแล้ว</p>
+    </details>
+    <details><summary>ส่งไฟล์ Ebook ให้ทางไหน</summary>
+      <p>ส่งทางไลน์ @pluggy00 หลังชำระเงินผ่าน PromptPay เราจะไม่ประกาศเลขบัญชีในสื่อสาธารณะ ระวังมิจฉาชีพแอบอ้าง ให้ทักเฉพาะไอดีนี้</p>
+    </details>
+    <details><summary>ปลอดภัยไหม ต้องให้รหัสผ่าน TradingView ไหม</summary>
+      <p>ไม่ต้อง และเราจะไม่ขอรหัสผ่านของคุณ การเชื่อมต่อใช้ OAuth คุณล็อกอินเองบนหน้าของ TradingView ไม่ต้องใช้ API key ตอนนัดติดตั้งคุณเป็นคนกรอกข้อมูลเข้าสู่ระบบเอง</p>
+    </details>
+    <details><summary>Claude จะแก้ไขข้อมูลใน TradingView ของฉันไหม</summary>
+      <p>เครื่องมือแบบอ่านอย่างเดียวไม่แก้ข้อมูลบัญชี แต่มีเครื่องมือแบบเขียน เช่น สร้างหรือลบ watchlist และ alert ที่เปลี่ยนข้อมูลได้ คู่มือจะสอนให้ตรวจก่อนอนุมัติทุกครั้ง</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="eyebrow">ติดต่อ</span>
+    <h2 style="font-size:var(--step-2); margin-top:12px">ถามก่อนได้ ไม่ต้องซื้อก็ทักได้</h2>
+    <p class="lede" style="margin-top:14px">ไม่แน่ใจว่าแพ็กเกจไหนเหมาะ หรือติดตรงไหนอยู่ ทักมาถามก่อนได้เลย</p>
+    <div class="social">
+      <span>Facebook: [ชื่อบัญชี]</span>
+      <span>Instagram: [ชื่อบัญชี]</span>
+      <span>TikTok: [ชื่อบัญชี]</span>
+      <span>LINE: @pluggy00</span>
+    </div>
+    <div class="cta"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>ข้อจำกัดความรับผิดชอบ</strong> เนื้อหาและบริการของ Chachan STORY เป็นความรู้เพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลและตัดสินใจด้วยตนเอง</p>
+    <p>Chachan STORY ไม่มีส่วนเกี่ยวข้อง ไม่ได้รับการรับรอง หรือสนับสนุนโดย TradingView หรือ Anthropic ชื่อ TradingView และ Claude เป็นเครื่องหมายการค้าของเจ้าของนั้นๆ เว็บไซต์นี้ไม่ได้ใช้โลโก้ของบริษัทดังกล่าว</p>
+    <p>&copy; Chachan STORY | ติดต่อทางไลน์ <a href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">@pluggy00</a></p>
+  </div>
+</footer>
+
+<div class="sticky"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
+
+<script>
+(function(){
+  var list=document.getElementById('caselist');
+  if(!list) return;
+  var cases=[].slice.call(list.querySelectorAll('.case'));
+  var dots=document.getElementById('cdots');
+  var prev=document.getElementById('cprev');
+  var next=document.getElementById('cnext');
+  var count=document.getElementById('ccount');
+  var current=0;
+
+  cases.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.className='dot'; b.type='button'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', i===0?'true':'false');
+    b.setAttribute('aria-label','เคส '+(i+1)+' '+(c.dataset.label||''));
+    b.addEventListener('click',function(){ go(i); });
+    dots.appendChild(b);
+  });
+
+  function go(i){
+    i=Math.max(0,Math.min(cases.length-1,i));
+    list.scrollTo({left:cases[i].offsetLeft-list.offsetLeft, behavior:'smooth'});
+  }
+  function sync(){
+    var mid=list.scrollLeft+list.clientWidth/2, best=0, dist=Infinity;
+    cases.forEach(function(c,i){
+      var d=Math.abs((c.offsetLeft-list.offsetLeft)+c.offsetWidth/2-mid);
+      if(d<dist){dist=d; best=i;}
+    });
+    if(best===current) return;
+    current=best;
+    [].forEach.call(dots.children,function(d,i){ d.setAttribute('aria-selected', i===best?'true':'false'); });
+    prev.disabled = best===0;
+    next.disabled = best===cases.length-1;
+    count.textContent='เคส '+(best+1)+' จาก '+cases.length+(best===cases.length-1?'':' — ปัดซ้ายเพื่อดูเคสถัดไป');
+  }
+  prev.addEventListener('click',function(){ go(current-1); });
+  next.addEventListener('click',function(){ go(current+1); });
+  list.addEventListener('scroll',function(){
+    window.clearTimeout(list._t); list._t=window.setTimeout(sync,60);
+  },{passive:true});
+  list.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){ e.preventDefault(); go(current+1); }
+    if(e.key==='ArrowLeft'){ e.preventDefault(); go(current-1); }
+  });
+  prev.disabled=true;
+  sync();
+})();
+</script>
+</body>
+</html>
