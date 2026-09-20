@@ -9,9 +9,9 @@
 <meta property="og:locale" content="th_TH">
 <meta property="og:title" content="Chachan STORY | ให้ Claude ใช้ TradingView MCP">
 <meta property="og:description" content="ให้ Claude ดึงข้อมูล TradingView มาช่วยวิเคราะห์ ทำเองได้ใน ~5 นาที ติดขัดก็มีคนช่วย">
-<meta property="og:url" content="[WEBSITE_URL]">
+<meta property="og:url" content="https://cc-plug.github.io/chachan-story/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23B4520C%27/%3E%3Crect x=%2714%27 y=%2734%27 width=%278%27 height=%2716%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2728%27 y=%2724%27 width=%278%27 height=%2726%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2742%27 y=%2714%27 width=%278%27 height=%2736%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
-<meta property="og:image" content="[WEBSITE_URL]og-image.png">
+<meta property="og:image" content="https://cc-plug.github.io/chachan-story/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,12 +26,12 @@
   "name": "คู่มือและบริการติดตั้ง TradingView MCP กับ Claude",
   "brand": {"@type": "Brand", "name": "Chachan STORY"},
   "description": "คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude และบริการนัดติดตั้งผ่านวิดีโอคอล",
-  "url": "[WEBSITE_URL]",
+  "url": "https://cc-plug.github.io/chachan-story/",
   "offers": [
-    {"@type": "Offer", "name": "Ebook", "price": "349", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
-    {"@type": "Offer", "name": "Bundle", "price": "690", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
-    {"@type": "Offer", "name": "นัดติดตั้ง 1 ชั่วโมง", "price": "499", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"},
-    {"@type": "Offer", "name": "Full", "price": "990", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "[WEBSITE_URL]#price"}
+    {"@type": "Offer", "name": "Ebook", "price": "349", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "https://cc-plug.github.io/chachan-story/#price"},
+    {"@type": "Offer", "name": "Bundle", "price": "690", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "https://cc-plug.github.io/chachan-story/#price"},
+    {"@type": "Offer", "name": "นัดติดตั้ง 1 ชั่วโมง", "price": "499", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "https://cc-plug.github.io/chachan-story/#price"},
+    {"@type": "Offer", "name": "Full", "price": "990", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "https://cc-plug.github.io/chachan-story/#price"}
   ]
 }
 </script>
@@ -198,6 +198,23 @@ section{padding-block:clamp(56px,8vw,104px)}
 .warn ul{margin:0; padding-left:18px}
 .cases-foot{margin-top:28px}
 
+/* real-result readout */
+.result{margin-top:22px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--sunken)}
+.result > header{
+  display:flex; gap:10px; align-items:baseline; justify-content:space-between; flex-wrap:wrap;
+  padding:10px 14px; background:var(--accent-soft); border-bottom:1px solid var(--line);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.74rem; letter-spacing:.06em; color:var(--accent);
+}
+.result .rbody{padding:14px 16px; font-size:var(--step--1); line-height:1.75}
+.result .rbody p + p{margin-top:8px}
+.rscroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+.rtable{width:100%; border-collapse:collapse; font-size:.82rem}
+.rtable th,.rtable td{text-align:left; padding:7px 6px; border-bottom:1px solid var(--line-soft); white-space:normal}
+.rtable th{color:var(--muted); font-weight:500; font-size:.74rem; letter-spacing:.04em}
+.rtable td.n,.rtable th.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.rtable tr:last-child td{border-bottom:0}
+.rnote{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); color:var(--muted); font-size:.82rem}
+
 /* checklist */
 .check{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:clamp(20px,3vw,30px); margin-top:26px}
 .check ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
@@ -360,6 +377,24 @@ footer a{color:var(--accent)}
             <b>ได้อะไรกลับมา</b>
             <p>ตารางเดียวจบครบทุกตัวในลิสต์ เรียงตามที่สั่ง พร้อมบรรทัดสรุปว่าวันนี้มีอีเวนต์เศรษฐกิจอะไรรออยู่ อยากเจาะตัวไหนต่อก็ถามต่อในแชตเดิมได้เลย ถามทีเดียวได้ทั้งลิสต์</p>
           </div>
+        
+          <div class="result">
+            <header><span>ผลลัพธ์จริงจาก watchlist ของผมเอง</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
+            <div class="rbody">
+              <div class="rscroll"><table class="rtable">
+                <thead><tr><th>สัญลักษณ์</th><th class="n">ราคา</th><th class="n">เปลี่ยน</th><th class="n">วอลุ่ม/เฉลี่ย</th></tr></thead>
+                <tbody>
+                  <tr><td>SET:<wbr>AOT</td><td class="n">61.25</td><td class="n">-0.81%</td><td class="n">1.18 เท่า</td></tr>
+                  <tr><td>SET:<wbr>CPALL</td><td class="n">45.00</td><td class="n">-0.55%</td><td class="n">1.06 เท่า</td></tr>
+                  <tr><td>SET:<wbr>PTT</td><td class="n">42.25</td><td class="n">0.00%</td><td class="n">0.52 เท่า</td></tr>
+                  <tr><td>NASDAQ:<wbr>AAPL</td><td class="n">336.13</td><td class="n">-0.26%</td><td class="n">1.96 เท่า</td></tr>
+                  <tr><td>NASDAQ:<wbr>TSLA</td><td class="n">364.27</td><td class="n">-0.53%</td><td class="n">1.28 เท่า</td></tr>
+                  <tr><td>TVC:<wbr>GOLD</td><td class="n">4,378.32</td><td class="n">+0.86%</td><td class="n">—</td></tr>
+                  <tr><td>BITSTAMP:<wbr>BTCUSD</td><td class="n">80,371.94</td><td class="n">-1.06%</td><td class="n">—</td></tr>
+                </tbody>
+              </table></div>
+              <p class="rnote">หุ้นไทย หุ้นนอก ทอง และคริปโต อยู่ในตารางเดียวกันจากคำถามเดียว และมีอีกเรื่องที่น่าสนใจ ผมใส่ <span class="mono">TVC:USOIL</span> ไปด้วยแต่ดึงราคาไม่ได้ ระบบตอบกลับมาตรงๆ ว่าหาข้อมูลไม่เจอ ไม่ได้เดาเป็นเลขศูนย์ให้</p></div>
+          </div>
         </div>
       </article>
 
@@ -387,6 +422,22 @@ footer a{color:var(--accent)}
             <b>บทเรียนจากการลองจริง</b>
             <p>ถ้าสั่งแค่ชื่อพรีเซ็ตเฉยๆ โดยไม่ใส่เงื่อนไขกรอง ผลที่ได้จะมีหุ้นราคาต่ำกว่าหนึ่งสตางค์และกองทุนตลาดเงินปนมาด้วย ต้องบอกมาร์เก็ตแคปและวอลุ่มขั้นต่ำเสมอ และผลสกรีนคือจุดตั้งต้นให้ไปดูกราฟต่อ ไม่ใช่รายการที่ควรซื้อ</p>
           </div>
+        
+          <div class="result">
+            <header><span>ผลลัพธ์จริง ก่อนกับหลังใส่ตัวกรอง</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
+            <div class="rbody">
+              <p><strong>สั่งแค่ชื่อสูตรคัดกรองอย่างเดียว</strong> ได้มา 1,025 ตัว ห้าอันดับแรกมีหุ้น OTC ราคา 0.0002 ดอลลาร์ และกองทุนตลาดเงินปนมาด้วย</p>
+              <p><strong>เติมเงื่อนไขมาร์เก็ตแคปเกินหนึ่งหมื่นล้านดอลลาร์ และวอลุ่มเฉลี่ยเกินหนึ่งล้านหุ้น</strong> เหลือ 7 ตัว</p>
+              <div class="rscroll"><table class="rtable">
+                <thead><tr><th>หุ้น</th><th class="n">ราคา</th><th class="n">RSI</th><th class="n">มาร์เก็ตแคป</th></tr></thead>
+                <tbody>
+                  <tr><td>NASDAQ:<wbr>LULU</td><td class="n">98.06</td><td class="n">36.4</td><td class="n">1.14 หมื่นล.</td></tr>
+                  <tr><td>NYSE:<wbr>ENB</td><td class="n">48.73</td><td class="n">37.7</td><td class="n">1.08 แสนล.</td></tr>
+                  <tr><td>NYSE:<wbr>NVS</td><td class="n">140.37</td><td class="n">37.8</td><td class="n">2.55 แสนล.</td></tr>
+                </tbody>
+              </table></div>
+              <p class="rnote">จาก 1,025 เหลือ 7 เพราะเงื่อนไขสองบรรทัด นี่คือเหตุผลที่คู่มือสอนให้ใส่ตัวกรองเสมอ</p></div>
+          </div>
         </div>
       </article>
 
@@ -410,6 +461,14 @@ footer a{color:var(--accent)}
             <p>สรุปภาษาไทยที่อ้างอิงเอกสารต้นทางจริง ทั้ง 10-K, 10-Q และบทถอดเสียงประชุมนักวิเคราะห์ ไม่ใช่ความเห็นลอยๆ อยากเช็กว่าสรุปถูกไหม เปิดหัวข้อที่อ้างกลับไปดูได้</p>
           </div>
           <p class="small" style="margin-top:14px">ให้ Claude อ้างอิงเสมอ แล้วสุ่มเช็กกลับสัก 1-2 จุด นี่คือวิธีจับว่า AI มั่วหรือไม่</p>
+        
+          <div class="result">
+            <header><span>ผลลัพธ์จริง รายงานที่ดึงได้</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
+            <div class="rbody">
+              <p>ขอรายงานประจำปีของ <span class="mono">NASDAQ:AAPL</span> ระบบมีย้อนหลังให้ <strong>12 ฉบับ</strong> ดึงสามฉบับล่าสุดมาได้แก่ 10-K ปีงบ 2025, 2024 และ 2023 แต่ละฉบับมีทั้งไฟล์ตัวเต็มและฉบับย่อที่อ่านเร็วกว่า</p>
+              <p>ลองกับหุ้นไทยด้วย <span class="mono">SET:AOT</span> มีเอกสารให้ <strong>30 รายการ</strong> เป็นรายงานไตรมาสและสไลด์นำเสนอนักลงทุน</p>
+              <p class="rnote">หุ้นไทยไม่มี 10-K เพราะเป็นแบบฟอร์มของตลาดอเมริกา แต่มีรายงานไตรมาสกับสไลด์ให้อ่านแทน</p></div>
+          </div>
         </div>
       </article>
 
@@ -439,6 +498,22 @@ footer a{color:var(--accent)}
           <div class="warn">
             <b>บทเรียนจากการลองจริง</b>
             <p>การตั้งภาษาเป็นไทยคือการเลือก<strong>สำนักข่าวภาษาไทย</strong> ไม่ใช่การแปลอัตโนมัติ ถ้าสั่งขอข่าวภาษาไทยของหุ้นอเมริกาจะได้ศูนย์ข่าว เพราะไม่มีสำนักข่าวไทยเขียนถึง ต้องดึงข่าวอังกฤษแล้วให้ Claude แปลแทน และการจัดอันดับว่าข่าวไหนสำคัญคือการประเมินของ AI ไม่ใช่ข้อเท็จจริง</p>
+          </div>
+        
+          <div class="result">
+            <header><span>ผลลัพธ์จริง ข่าวที่ดึงได้</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
+            <div class="rbody">
+              <div class="rscroll"><table class="rtable">
+                <thead><tr><th>ขอข่าวของ</th><th>ภาษา</th><th class="n">ได้กี่ข่าว</th></tr></thead>
+                <tbody>
+                  <tr><td>SET:<wbr>AOT</td><td>ไทย</td><td class="n">78</td></tr>
+                  <tr><td>SET:<wbr>PTT</td><td>ไทย</td><td class="n">59</td></tr>
+                  <tr><td>NASDAQ:<wbr>AAPL</td><td>ไทย</td><td class="n">0</td></tr>
+                  <tr><td>NASDAQ:<wbr>AAPL</td><td>อังกฤษ</td><td class="n">200</td></tr>
+                </tbody>
+              </table></div>
+              <p style="margin-top:10px">หัวข้อล่าสุดของ <span class="mono">SET:PTT</span> ที่ได้มาคือ "กลุ่ม ปตท. รุกขยายธุรกิจ LNG สร้างการเติบโตในตลาดพลังงานโลก จับมือพันธมิตรระดับสากลในงาน Gastech 2026" จากสำนักข่าวอินโฟเควสท์ และเปิดอ่านเนื้อข่าวตัวเต็มได้</p>
+              <p class="rnote">ตารางนี้คือเหตุผลที่ผมแก้เคสนี้ใหม่ ตอนแรกผมเขียนว่าขอข่าวหุ้นนอกเป็นภาษาไทยได้ พอยิงจริงได้ศูนย์ข่าว เลยต้องเปลี่ยนวิธีเป็นดึงอังกฤษแล้วให้ Claude แปล</p></div>
           </div>
         </div>
       </article>
@@ -470,6 +545,13 @@ footer a{color:var(--accent)}
               <li>วิธีนี้ตั้งได้เฉพาะเงื่อนไขราคาแบบตรงไปตรงมา เงื่อนไขซับซ้อนยังต้องไปตั้งในแอปเอง</li>
               <li>ถ้าจะให้ยิงต่อไประบบอื่นอัตโนมัติ ต้องมีแพ็กเกจที่รองรับและเปิดยืนยันตัวตนสองชั้น</li>
             </ul>
+          </div>
+        
+          <div class="result">
+            <header><span>ผลลัพธ์จริง และสิ่งที่ผมเลือกไม่ทำ</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
+            <div class="rbody">
+              <p>ขอดูรายการแจ้งเตือนในบัญชี ได้คำตอบว่า <strong>ยังไม่มี alert สักตัว</strong> และขอบันทึกย้อนหลัง 7 วัน ได้ <strong>0 ครั้ง</strong> ซึ่งตรงกับความจริง เพราะบัญชีนี้ยังไม่เคยตั้งเตือน</p>
+              <p class="rnote">ผมหยุดแค่นี้ ไม่ได้สร้าง alert ตัวอย่างให้ดู เพราะการสร้างคือคำสั่งที่เข้าไปแก้บัญชีจริง ตอนใช้เองก็ควรใช้หลักเดียวกัน คือสั่งขอดูรายการก่อน แล้วค่อยยืนยัน</p></div>
           </div>
         </div>
       </article>
@@ -615,9 +697,6 @@ footer a{color:var(--accent)}
     <h2 style="font-size:var(--step-2); margin-top:12px">ถามก่อนได้ ไม่ต้องซื้อก็ทักได้</h2>
     <p class="lede" style="margin-top:14px">ไม่แน่ใจว่าแพ็กเกจไหนเหมาะ หรือติดตรงไหนอยู่ ทักมาถามก่อนได้เลย</p>
     <div class="social">
-      <span>Facebook: [ชื่อบัญชี]</span>
-      <span>Instagram: [ชื่อบัญชี]</span>
-      <span>TikTok: [ชื่อบัญชี]</span>
       <span>LINE: @pluggy00</span>
     </div>
     <div class="cta"><a class="btn btn-primary" href="https://line.me/R/ti/p/%40pluggy00" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a></div>
