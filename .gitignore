@@ -1,0 +1,4 @@
+# local-only files, never publish
+README.md
+index-v1.html
+preview-*.png
