@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chachan STORY | ให้ Claude ใช้ TradingView MCP</title>
-<meta name="description" content="คู่มือ ebook และบริการนัดติดตั้ง TradingView MCP Server กับ Claude ทำเองได้ใน ~5 นาที ติดขัดมีคนช่วย ทักไลน์ @pluggy00">
+<meta name="description" content="คู่มือภาษาไทย 79 หน้า ต่อ TradingView MCP Server กับ Claude ทั้งบนคอมและมือถือ พร้อมสูตร prompt 52 สูตรไทยและอังกฤษ ทำเองได้ใน ~5 นาที ติดขัดมีคนช่วย ทักไลน์ @pluggy00">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="th_TH">
 <meta property="og:title" content="Chachan STORY | ให้ Claude ใช้ TradingView MCP">
-<meta property="og:description" content="ให้ Claude ดึงข้อมูล TradingView มาช่วยวิเคราะห์ ทำเองได้ใน ~5 นาที ติดขัดก็มีคนช่วย">
+<meta property="og:description" content="ให้ Claude ดึงข้อมูล TradingView มาช่วยวิเคราะห์ คู่มือ 79 หน้า พร้อมสูตร prompt 52 สูตร ทำเองได้ใน ~5 นาที ติดขัดก็มีคนช่วย">
 <meta property="og:url" content="https://cc-plug.github.io/chachan-story/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23B4520C%27/%3E%3Crect x=%2714%27 y=%2734%27 width=%278%27 height=%2716%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2728%27 y=%2724%27 width=%278%27 height=%2726%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3Crect x=%2742%27 y=%2714%27 width=%278%27 height=%2736%27 rx=%273%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
 <meta property="og:image" content="https://cc-plug.github.io/chachan-story/og-image.png">
@@ -25,7 +25,7 @@
   "@type": "Product",
   "name": "คู่มือและบริการติดตั้ง TradingView MCP กับ Claude",
   "brand": {"@type": "Brand", "name": "Chachan STORY"},
-  "description": "คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude และบริการนัดติดตั้งผ่านวิดีโอคอล",
+  "description": "คู่มือภาษาไทย 79 หน้าสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude พร้อมสูตร prompt 52 สูตรไทยและอังกฤษ Claude Skills 5 ชุด Trading Journal 9 ชีต และบริการนัดติดตั้งผ่านวิดีโอคอล",
   "url": "https://cc-plug.github.io/chachan-story/",
   "offers": [
     {"@type": "Offer", "name": "Ebook", "price": "349", "priceCurrency": "THB", "availability": "https://schema.org/InStock", "url": "https://cc-plug.github.io/chachan-story/#price"},
@@ -260,6 +260,8 @@ section{padding-block:clamp(56px,8vw,104px)}
   border-radius:14px; padding:20px; display:flex; flex-wrap:wrap; gap:14px;
   align-items:center; justify-content:space-between;
 }
+.freebtns{display:flex; flex-wrap:wrap; gap:10px}
+@media (max-width:560px){ .freebtns{width:100%} .freebtns .btn{flex:1 1 100%} }
 
 /* booking */
 .steps{counter-reset:s; display:grid; gap:14px; margin-top:24px}
@@ -334,7 +336,7 @@ footer a{color:var(--accent)}
   <div class="wrap">
     <span class="eyebrow">TradingView MCP + Claude</span>
     <h1>ถามเป็นภาษาไทยประโยคเดียว <span class="hi">แล้วให้ Claude ไปอ่านข้อมูล TradingView มาให้</span></h1>
-    <p class="lede">คู่มือภาษาไทยสำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude ทั้ง Chat และ Cowork ทำเองได้ใน 5 นาที ติดขัดก็นัดวิดีโอคอลให้ช่วยติดตั้งจนใช้งานได้</p>
+    <p class="lede">คู่มือภาษาไทย 79 หน้า สำหรับต่อ TradingView MCP Server ทางการเข้ากับ Claude ทั้ง Chat, Cowork และบนมือถือ พร้อมสูตร prompt 52 สูตรทั้งฉบับไทยและอังกฤษ ทำเองได้ใน 5 นาที ติดขัดก็นัดวิดีโอคอลให้ช่วยติดตั้งจนใช้งานได้</p>
     <div class="cta">
       <a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ทักไลน์ @pluggy00</a>
       <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
@@ -405,7 +407,7 @@ footer a{color:var(--accent)}
         <div>
           <div class="case-idx"><i></i>เคส 02 — คัดหุ้น</div>
           <h3>ไม่รู้จักชื่อฟิลเตอร์สักตัว ก็สกรีนหุ้นได้</h3>
-          <p class="pain">หน้าสกรีนเนอร์มีคอลัมน์ให้เลือกเป็นร้อย กว่าจะตั้งเงื่อนไขถูกก็ท้อไปก่อน</p>
+          <p class="pain">หน้าสกรีนเนอร์มีคอลัมน์ให้เลือกเป็นร้อย การตั้งเงื่อนไขให้ตรงจึงใช้เวลาและต้องรู้ชื่อฟิลเตอร์ก่อน</p>
         </div>
         <div>
           <div class="beat">
@@ -423,7 +425,7 @@ footer a{color:var(--accent)}
           </div>
           <div class="warn">
             <b>บทเรียนจากการลองจริง</b>
-            <p>ถ้าสั่งแค่ชื่อพรีเซ็ตเฉยๆ โดยไม่ใส่เงื่อนไขกรอง ผลที่ได้จะมีหุ้นราคาต่ำกว่าหนึ่งสตางค์และกองทุนตลาดเงินปนมาด้วย ต้องบอกมาร์เก็ตแคปและวอลุ่มขั้นต่ำเสมอ และผลสกรีนคือจุดตั้งต้นให้ไปดูกราฟต่อ ไม่ใช่รายการที่ควรซื้อ</p>
+            <p>ถ้าสั่งแค่ชื่อ Preset เฉยๆ โดยไม่ใส่เงื่อนไขกรอง ผลที่ได้จะมีหุ้นราคาต่ำกว่าหนึ่งสตางค์และกองทุนตลาดเงินปนมาด้วย ต้องบอกมาร์เก็ตแคปและวอลุ่มขั้นต่ำเสมอ และผลสกรีนคือจุดตั้งต้นให้ไปดูกราฟต่อ ไม่ใช่รายการที่ควรซื้อ</p>
           </div>
         
           <div class="result">
@@ -463,7 +465,7 @@ footer a{color:var(--accent)}
             <b>ได้อะไรกลับมา</b>
             <p>สรุปภาษาไทยที่อ้างอิงเอกสารต้นทางจริง ทั้ง 10-K, 10-Q และบทถอดเสียงประชุมนักวิเคราะห์ ไม่ใช่ความเห็นลอยๆ อยากเช็กว่าสรุปถูกไหม เปิดหัวข้อที่อ้างกลับไปดูได้</p>
           </div>
-          <p class="small" style="margin-top:14px">ให้ Claude อ้างอิงเสมอ แล้วสุ่มเช็กกลับสัก 1-2 จุด นี่คือวิธีจับว่า AI มั่วหรือไม่</p>
+          <p class="small" style="margin-top:14px">ให้ Claude อ้างอิงเสมอ แล้วสุ่มเช็กกลับสัก 1-2 จุด นี่คือวิธีจับว่าคำตอบคลาดเคลื่อนตรงไหน</p>
         
           <div class="result">
             <header><span>ผลลัพธ์จริง รายงานที่ดึงได้</span><span>ยิงจริง 20 ก.ย. 2569</span></header>
@@ -605,7 +607,10 @@ footer a{color:var(--accent)}
         <h3>Ebook คู่มือ</h3>
         <div class="amt">349 <small>บาท</small></div>
         <ul>
-          <li>คู่มือฉบับเต็ม Claude Chat + Cowork กับ TradingView MCP</li>
+          <li>คู่มือ 79 หน้า 11 บท ภาพหน้าจอจริงทุกขั้นตอนติดตั้ง</li>
+          <li>สูตร prompt <b>52 สูตร</b> ทั้งฉบับไทยและอังกฤษ คัดลอกไปใช้ได้เลย</li>
+          <li>บทใช้งานบนมือถือ และบท Cowork, Skills, Project</li>
+          <li>บทสิ่งที่คู่มือทั่วไปไม่บอก บันทึกจากการยิงกับบัญชีจริง</li>
           <li>อัปเดตฟรีเมื่อเนื้อหาเปลี่ยน</li>
         </ul>
         <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
@@ -615,8 +620,9 @@ footer a{color:var(--accent)}
         <div class="amt">690 <small>บาท</small></div>
         <ul>
           <li>ได้ทุกอย่างในแพ็ก Ebook</li>
-          <li><b>เพิ่ม</b> Claude Skills 5 ชุด ติดตั้งแล้วเรียกใช้ได้เลย: สรุปตลาดเช้า, เช็ก watchlist, สกรีนเนอร์, ดูงบก่อนประกาศ, ทบทวนหลังเทรด พร้อมคู่มือติดตั้งภาษาไทย</li>
-          <li><b>เพิ่ม</b> ไฟล์ Trading Journal (.xlsx) พร้อมแผนสร้างนิสัยจดบันทึก 30 วัน</li>
+          <li><b>เพิ่ม</b> Claude Skills 5 ชุด ทดสอบกับบัญชีจริงแล้ว: สรุปตลาดเช้า, เช็ก watchlist, สกรีนเนอร์, ดูงบ, ทบทวนหลังเทรด</li>
+          <li><b>เพิ่ม</b> Trading Journal 9 ชีต คิด R อัตราชนะ และกราฟให้เอง มีหน้าคำนวณขนาดไม้</li>
+          <li><b>เพิ่ม</b> แผนสร้างนิสัยจดบันทึก 30 วัน</li>
           <li>อัปเดตฟรีเมื่อเนื้อหาเปลี่ยน</li>
         </ul>
         <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">สั่งซื้อทางไลน์</a>
@@ -638,16 +644,19 @@ footer a{color:var(--accent)}
         <div class="amt">990 <small>บาท</small></div>
         <div class="was">โปร 790 บาท (10 คนแรก)</div>
         <ul>
-          <li>Bundle ทั้งหมด (Ebook + Skills + Journal)</li>
+          <li>Bundle ทั้งหมด (Ebook 52 สูตร + Skills 5 ชุด + Journal 9 ชีต)</li>
           <li>นัดติดตั้ง 1 ชั่วโมง</li>
         </ul>
-        <a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">เลือก Full ทางไลน์</a>
+        <a class="btn btn-primary" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">สั่ง Full ทางไลน์</a>
       </div>
     </div>
 
     <div class="freebar">
-      <div><b>ฟรี: คู่มือ Notion 4 หน้า + เช็กลิสต์ "ทำเองได้ไหม"</b><br><span class="small">เริ่มจากตรงนี้ก่อนก็ได้ ไม่ต้องจ่าย</span></div>
-      <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
+      <div><b>ฟรี: คู่มือ Notion 4 หน้า + ไฟล์ตัวอย่างจากเล่มจริง 7 หน้า</b><br><span class="small">ไฟล์ตัวอย่างมีสารบัญเล่มเต็มและบทจริงสองตอน ทักไลน์ขอได้เลย ไม่ต้องซื้อ</span></div>
+      <div class="freebtns">
+        <a class="btn btn-ghost" href="https://private-character-f70.notion.site/Chachan-STORY-TradingView-MCP-Guide-3e183b60fe7e80f385f5d57c8d211670" target="_blank" rel="noopener">อ่านคู่มือฟรี</a>
+        <a class="btn btn-ghost" href="https://line.me/ti/p/k6GwNDCDvZ" target="_blank" rel="noopener">ขอไฟล์ตัวอย่างทางไลน์</a>
+      </div>
     </div>
   </div>
 </section>
@@ -682,6 +691,9 @@ footer a{color:var(--accent)}
       <p><strong>บริการติดตั้ง</strong> ถ้าจบนัดแล้วยังใช้งานไม่ได้ และสาเหตุอยู่ที่ฝั่งเรา นัดแก้ให้ฟรีอีก 1 ครั้ง ถ้ายังไม่ได้อีก คืนค่าบริการติดตั้งเต็มจำนวน แต่ถ้าติดที่เงื่อนไขบัญชีของคุณเอง เช่น ยังเป็นแพ็กเกจทดลองที่ใช้ MCP ไม่ได้ จะไม่คืนเงิน เลื่อนนัดไปทำตอนพร้อมได้ 1 ครั้ง จึงอยากให้เช็กลิสต์ 3 ข้อด้านบนก่อนจอง</p>
       <p><strong>Ebook และ Bundle</strong> เป็นไฟล์ดิจิทัล เมื่อส่งไฟล์แล้วไม่คืนเงิน แต่ถ้ายังไม่ได้ส่งไฟล์ ยกเลิกได้เต็มจำนวน</p>
       <p><strong>เลื่อนนัด</strong> แจ้งล่วงหน้าอย่างน้อย 24 ชั่วโมง เลื่อนฟรี 1 ครั้ง ถ้าไม่มาตามนัดโดยไม่แจ้ง ถือว่าใช้สิทธิ์นัดนั้นแล้ว</p>
+    </details>
+    <details><summary>มีตัวอย่างให้อ่านก่อนซื้อไหม</summary>
+      <p>มีครับ ไฟล์ตัวอย่าง 7 หน้า ตัดจากเล่มจริง มีสารบัญเล่มเต็มพร้อมเลขหน้า บทที่ 1 เรื่อง MCP คืออะไร และหัวข้อ 10.2 เรื่องกับดักภาษาของข่าวที่เจอตอนยิงจริง ทักไลน์ @pluggy00 ขอได้เลย ไม่ต้องซื้อ</p>
     </details>
     <details><summary>ส่งไฟล์ Ebook ให้ทางไหน</summary>
       <p>ส่งทางไลน์ @pluggy00 หลังชำระเงินผ่าน PromptPay เราจะไม่ประกาศเลขบัญชีในสื่อสาธารณะ ระวังมิจฉาชีพแอบอ้าง ให้ทักเฉพาะไอดีนี้</p>
